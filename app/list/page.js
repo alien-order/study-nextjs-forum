@@ -22,10 +22,11 @@ function ListItem(props){
     return (
         <>
             <div className="list-item">
-                <Link href={"./detail/" + props.id}>
+                <Link href={'./detail/' + props.id}>
                     <h4>{ props.title }</h4>
                 </Link>
                 <DetailLink></DetailLink>
+                <Link href={'/edit/' + props.id}>✍</Link>
                 <p>{ props.content }</p>
             </div>
         </>
