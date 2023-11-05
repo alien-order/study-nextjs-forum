@@ -1,11 +1,12 @@
 import { connectDB } from "@/util/database";
-import { getSession } from "next-auth/react";
 import { authOptions } from "../auth/[...nextauth]";
 import { ObjectId } from "mongodb";
+import { getServerSession } from "next-auth";
 
 export default async function handler(req, res){
     if (req.method === 'POST') {
-        let session = await getSession(req, res, authOptions)
+        let session = await getServerSession(req, res, authOptions)
+        req.body = JSON.parse(req.body)
 
         if (session) {
             req.body.author = session.user.email
